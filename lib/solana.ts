@@ -16,13 +16,13 @@ import {
   TOKEN_PROGRAM_ID,
 } from '@solana/spl-token';
 import bs58 from 'bs58';
+import dotenv from 'dotenv';
+import path from 'path';
 
 // Try to load environment variables for Node.js contexts
 if (typeof window === 'undefined' && typeof process !== 'undefined') {
   try {
-    // Dynamically import dotenv for Node.js contexts
-    const dotenv = require('dotenv');
-    const path = require('path');
+    // Load dotenv configuration
     dotenv.config({ path: path.join(process.cwd(), '.env.local') });
   } catch (error) {
     // Ignore if dotenv is not available

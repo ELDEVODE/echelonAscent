@@ -1,4 +1,4 @@
-import { ascentTokenManager } from '../lib/solana';
+import { AscentTokenManager } from '../lib/solana';
 import dotenv from 'dotenv';
 
 // Load environment variables
@@ -8,14 +8,15 @@ async function getAuthorityAddress() {
   try {
     console.log('🔑 Getting authority address...');
     
+    const tokenManager = new AscentTokenManager();
     // Check if authority is properly initialized
-    if (!ascentTokenManager.hasAuthority()) {
+    if (!tokenManager.hasAuthority()) {
       console.error('❌ Authority keypair not initialized. Check your ASCENT_TOKEN_AUTHORITY_PRIVATE_KEY in .env.local');
       process.exit(1);
     }
 
     // Get the public key
-    const publicKey = ascentTokenManager.getAuthorityPublicKey();
+    const publicKey = tokenManager.getAuthorityPublicKey();
     
     console.log('✅ Authority address found:');
     console.log(`🏦 Public Key: ${publicKey}`);

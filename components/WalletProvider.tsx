@@ -4,7 +4,7 @@ import React, { createContext, useContext, useEffect, useState, ReactNode } from
 import { useUser } from '@civic/auth-web3/react';
 import { userHasWallet } from '@civic/auth-web3';
 import { PublicKey } from '@solana/web3.js';
-import { ascentTokenManager } from '../lib/solana';
+import { AscentTokenManager } from '../lib/solana';
 import { useQuery, useMutation, useAction } from 'convex/react';
 import { api } from '../convex/_generated/api';
 
@@ -102,7 +102,8 @@ export function WalletProvider({ children }: WalletProviderProps) {
     }
 
     try {
-      const onChainBalance = await ascentTokenManager.getTokenBalance(walletAddress);
+      const tokenManager = new AscentTokenManager();
+      const onChainBalance = await tokenManager.getTokenBalance(walletAddress);
       
       // Sync with database
       await syncBalance({
