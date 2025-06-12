@@ -45,24 +45,24 @@ const TransactionItem: React.FC<TransactionItemProps> = ({ transaction }) => {
   };
 
   return (
-    <div className="flex items-center justify-between p-3 bg-gray-900 rounded-lg border border-gray-700">
-      <div className="flex items-center gap-3">
-        <div className={`text-xl ${getTypeColor(type)}`}>
+    <div className="flex items-center justify-between p-4 bg-black/60 rounded-lg border border-cyan-400/30 backdrop-blur-sm hover:border-cyan-400/50 transition-all duration-300">
+      <div className="flex items-center gap-4">
+        <div className={`text-2xl ${getTypeColor(type)}`}>
           {getTypeIcon(type)}
         </div>
         <div>
-          <div className="font-semibold text-white">{description}</div>
-          <div className="text-xs text-gray-400">
+          <div className="font-semibold text-white text-lg">{description}</div>
+          <div className="text-sm text-gray-400 font-mono">
             {new Date(timestamp).toLocaleString()}
           </div>
           {transactionSignature && (
-            <div className="text-xs text-blue-400 truncate max-w-[200px]">
+            <div className="text-xs text-blue-400 font-mono truncate max-w-[200px] mt-1">
               Tx: {transactionSignature.slice(0, 8)}...{transactionSignature.slice(-8)}
             </div>
           )}
         </div>
       </div>
-      <div className={`font-bold ${direction === 'credit' ? 'text-green-400' : 'text-red-400'}`}>
+      <div className={`font-bold text-lg ${direction === 'credit' ? 'text-green-400' : 'text-red-400'}`}>
         {direction === 'credit' ? '+' : '-'}{amount.toLocaleString()} ASCENT
       </div>
     </div>
@@ -99,24 +99,24 @@ const BridgeRequestItem: React.FC<BridgeRequestItemProps> = ({ request }) => {
   };
 
   return (
-    <div className="flex items-center justify-between p-3 bg-gray-900 rounded-lg border border-gray-700">
+    <div className="flex items-center justify-between p-4 bg-black/60 rounded-lg border border-cyan-400/30 backdrop-blur-sm hover:border-cyan-400/50 transition-all duration-300">
       <div>
-        <div className="font-semibold text-white">
+        <div className="font-semibold text-white text-lg">
           Bridge {getDirectionText(direction)}
         </div>
-        <div className="text-sm text-gray-400">
+        <div className="text-sm text-gray-400 font-mono">
           {amount.toLocaleString()} ASCENT
         </div>
-        <div className="text-xs text-gray-500">
+        <div className="text-xs text-gray-500 font-mono">
           {new Date(requestedAt).toLocaleString()}
         </div>
         {errorMessage && (
-          <div className="text-xs text-red-400 mt-1">
+          <div className="text-xs text-red-400 mt-1 font-mono">
             Error: {errorMessage}
           </div>
         )}
       </div>
-      <div className={`font-bold ${getStatusColor(status)} uppercase text-sm`}>
+      <div className={`font-bold ${getStatusColor(status)} uppercase text-sm px-3 py-1 rounded-full bg-cyan-400/10 border border-cyan-400/20`}>
         {status}
       </div>
     </div>
@@ -156,9 +156,9 @@ const TokenDashboard: React.FC = () => {
 
   if (!isAuthenticated) {
     return (
-      <div className="bg-gray-800 border border-cyan-500 rounded-lg p-6 text-center">
-        <div className="text-cyan-400 text-2xl mb-4">🔒</div>
-        <h3 className="text-cyan-400 font-bold text-lg mb-2">Wallet Not Connected</h3>
+      <div className="bg-black/60 border border-green-400/30 rounded-lg p-6 text-center">
+        <div className="text-green-400 text-2xl mb-4">🔒</div>
+        <h3 className="text-green-400 font-bold text-lg mb-2">Wallet Not Connected</h3>
         <p className="text-gray-400">Connect your wallet to view token information</p>
       </div>
     );
@@ -168,14 +168,14 @@ const TokenDashboard: React.FC = () => {
     <div className="space-y-6">
       {/* Header */}
       <div className="text-center">
-        <h2 className="text-3xl font-bold text-cyan-400 font-mono mb-2">
+        <h2 className="text-3xl font-bold text-green-400 font-mono mb-2">
           ASCENT TOKEN DASHBOARD
         </h2>
-        <div className="h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent" />
+        <div className="h-px bg-gradient-to-r from-transparent via-green-400 to-transparent" />
       </div>
 
       {/* Navigation Tabs */}
-      <div className="flex space-x-4 bg-gray-900 p-1 rounded-lg">
+      <div className="flex space-x-4 bg-black/60 p-1 rounded-lg border border-green-400/30">
         {[
           { id: 'overview', label: 'Overview', icon: '📊' },
           { id: 'transactions', label: 'Transactions', icon: '📋' },
@@ -184,10 +184,10 @@ const TokenDashboard: React.FC = () => {
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id as 'overview' | 'transactions' | 'bridge')}
-            className={`flex-1 py-2 px-4 rounded font-mono text-sm transition-colors ${
+            className={`flex-1 py-2 px-4 rounded font-mono text-sm transition-all duration-300 ${
               activeTab === tab.id
-                ? 'bg-cyan-600 text-white'
-                : 'text-gray-400 hover:text-cyan-400'
+                ? 'bg-gradient-to-r from-green-600/80 to-green-500/80 text-white shadow-lg shadow-green-500/20'
+                : 'text-gray-400 hover:text-green-400 hover:bg-green-400/10'
             }`}
           >
             {tab.icon} {tab.label}
@@ -203,28 +203,28 @@ const TokenDashboard: React.FC = () => {
 
           {/* Token Stats */}
           {tokenStats && (
-            <div className="bg-gray-800 border border-cyan-500 rounded-lg p-4 font-mono">
-              <h3 className="text-cyan-400 font-bold mb-3">Network Stats</h3>
-              <div className="space-y-2">
-                <div className="flex justify-between">
+            <div className="bg-black/60 border border-green-400/30 rounded-lg p-6 font-mono backdrop-blur-sm">
+              <h3 className="text-green-400 font-bold mb-4 text-lg">Network Stats</h3>
+              <div className="space-y-3">
+                <div className="flex justify-between items-center p-2 rounded-lg bg-green-400/5 border border-green-400/20">
                   <span className="text-gray-400">Total Supply:</span>
-                  <span className="text-green-400">{tokenStats.totalSupply.toLocaleString()}</span>
+                  <span className="text-green-400 font-bold">{tokenStats.totalSupply.toLocaleString()}</span>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex justify-between items-center p-2 rounded-lg bg-green-400/5 border border-green-400/20">
                   <span className="text-gray-400">On-Chain:</span>
-                  <span className="text-blue-400">{tokenStats.totalOnChain.toLocaleString()}</span>
+                  <span className="text-blue-400 font-bold">{tokenStats.totalOnChain.toLocaleString()}</span>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex justify-between items-center p-2 rounded-lg bg-green-400/5 border border-green-400/20">
                   <span className="text-gray-400">Off-Chain:</span>
-                  <span className="text-purple-400">{tokenStats.totalOffChain.toLocaleString()}</span>
+                  <span className="text-purple-400 font-bold">{tokenStats.totalOffChain.toLocaleString()}</span>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex justify-between items-center p-2 rounded-lg bg-green-400/5 border border-green-400/20">
                   <span className="text-gray-400">Holders:</span>
-                  <span className="text-yellow-400">{tokenStats.totalHolders}</span>
+                  <span className="text-yellow-400 font-bold">{tokenStats.totalHolders}</span>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex justify-between items-center p-2 rounded-lg bg-green-400/5 border border-green-400/20">
                   <span className="text-gray-400">Pending Bridges:</span>
-                  <span className="text-red-400">{tokenStats.pendingBridges}</span>
+                  <span className="text-red-400 font-bold">{tokenStats.pendingBridges}</span>
                 </div>
               </div>
             </div>
@@ -232,18 +232,18 @@ const TokenDashboard: React.FC = () => {
 
           {/* Quick Actions */}
           <div className="lg:col-span-2">
-            <div className="bg-gray-800 border border-cyan-500 rounded-lg p-4">
-              <h3 className="text-cyan-400 font-bold mb-3 font-mono">Quick Actions</h3>
+            <div className="bg-black/60 border border-green-400/30 rounded-lg p-6 backdrop-blur-sm">
+              <h3 className="text-green-400 font-bold mb-4 text-lg font-mono">Quick Actions</h3>
               <div className="grid grid-cols-2 gap-4">
                 <button
                   onClick={refreshBalance}
-                  className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded font-mono text-sm transition-colors"
+                  className="bg-gradient-to-r from-green-600/80 to-green-500/80 hover:from-green-500 hover:to-green-400 text-white py-3 px-4 rounded-lg font-mono text-sm transition-all duration-300 shadow-lg shadow-green-500/20 hover:shadow-green-500/30"
                 >
                   🔄 Refresh Balance
                 </button>
                 <button
                   onClick={initializeBalance}
-                  className="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded font-mono text-sm transition-colors"
+                  className="bg-gradient-to-r from-green-600/80 to-green-500/80 hover:from-green-500 hover:to-green-400 text-white py-3 px-4 rounded-lg font-mono text-sm transition-all duration-300 shadow-lg shadow-green-500/20 hover:shadow-green-500/30"
                 >
                   ⚡ Initialize Wallet
                 </button>
@@ -256,7 +256,7 @@ const TokenDashboard: React.FC = () => {
       {activeTab === 'transactions' && (
         <div className="space-y-4">
           <div className="flex justify-between items-center">
-            <h3 className="text-cyan-400 font-bold font-mono">Transaction History</h3>
+            <h3 className="text-green-400 font-bold font-mono">Transaction History</h3>
             {transactions && (
               <span className="text-gray-400 text-sm">
                 {transactions.length} transactions
@@ -290,7 +290,7 @@ const TokenDashboard: React.FC = () => {
           {/* Pending Bridge Requests */}
           {bridgeRequests && bridgeRequests.length > 0 && (
             <div className="space-y-4">
-              <h3 className="text-cyan-400 font-bold font-mono">Pending Bridge Requests</h3>
+              <h3 className="text-green-400 font-bold font-mono">Pending Bridge Requests</h3>
               <div className="space-y-3">
                 {bridgeRequests.map((request) => (
                   <BridgeRequestItem key={request.id} request={request} />
@@ -300,8 +300,8 @@ const TokenDashboard: React.FC = () => {
           )}
 
           {/* Bridge Info */}
-          <div className="bg-gray-800 border border-cyan-500 rounded-lg p-4">
-            <h3 className="text-cyan-400 font-bold mb-3 font-mono">Bridge Information</h3>
+          <div className="bg-black/60 border border-green-400/30 rounded-lg p-4">
+            <h3 className="text-green-400 font-bold mb-3 font-mono">Bridge Information</h3>
             <div className="text-sm text-gray-400 space-y-2">
               <p>• Bridge operations may take 1-5 minutes to complete</p>
               <p>• On-chain tokens can be used for P2P transfers and DeFi</p>

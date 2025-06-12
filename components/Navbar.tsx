@@ -67,6 +67,7 @@ export default function Navbar({ ascentCredits: propAscentCredits }: NavbarProps
     { id: 'augmentee', label: 'Augmentee', href: '/augmentee', active: pathname === '/augmentee' },
     { id: 'techlab', label: 'Tech Lab', href: '/techlab', badge: techLabItemsCount > 0 ? techLabItemsCount.toString() : undefined, active: pathname === '/techlab' },
     { id: 'marketplace', label: 'Market', href: '/marketplace', active: pathname === '/marketplace' },
+    { id: 'tokens', label: 'Tokens', href: '/tokens', active: pathname === '/tokens' },
     { id: 'leaderboards', label: 'Rankings', href: '/leaderboards', active: pathname === '/leaderboards' }
   ];
 
