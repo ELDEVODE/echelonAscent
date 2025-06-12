@@ -1,0 +1,51 @@
+{
+  "name": "Ascent Credits",
+  "symbol": "ASCENT",
+  "description": "The official currency of Echelon Ascent - a cyberpunk gaming metaverse where players enhance their bionic abilities and compete in high-stakes missions.",
+  "image": "https://echelon-ascent.vercel.app/images/logo.png",
+  "external_url": "https://echelon-ascent.vercel.app",
+  "attributes": [
+    {
+      "trait_type": "Type",
+      "value": "Gaming Token"
+    },
+    {
+      "trait_type": "Network",
+      "value": "Solana"
+    },
+    {
+      "trait_type": "Standard",
+      "value": "SPL Token"
+    },
+    {
+      "trait_type": "Decimals",
+      "value": "6"
+    },
+    {
+      "trait_type": "Game",
+      "value": "Echelon Ascent"
+    },
+    {
+      "trait_type": "Genre",
+      "value": "Cyberpunk"
+    },
+    {
+      "trait_type": "Use Case",
+      "value": "In-Game Currency"
+    }
+  ],
+  "properties": {
+    "category": "token",
+    "files": [
+      {
+        "uri": "https://echelon-ascent.vercel.app/images/logo.png",
+        "type": "image/png"
+      }
+    ]
+  },
+  "seller_fee_basis_points": 0,
+  "collection": {
+    "name": "Echelon Ascent Assets",
+    "family": "EchelonAscent"
+  }
+} 

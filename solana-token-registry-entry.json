@@ -1,0 +1,22 @@
+{
+  "chainId": 103,
+  "address": "2CnhMRkyUuhuHZoU1ri2ogfojyXfc9qPHwjeEuREH8fA",
+  "symbol": "ASCENT",
+  "name": "Ascent Token",
+  "decimals": 6,
+  "logoURI": "https://raw.githubusercontent.com/ELDEVODE/Ecas/refs/heads/main/Gemini_Generated_Image_91z3m491z.png",
+  "tags": [
+    "gaming",
+    "utility",
+    "training",
+    "rewards"
+  ],
+  "extensions": {
+    "website": "https://echelon-ascent.vercel.app",
+    "description": "Official token of Echelon Ascent gaming platform. Earn ASCENT tokens by completing training missions, achieving high scores, and participating in competitive leaderboards.",
+    "twitter": "https://twitter.com/echelon_ascent",
+    "telegram": "https://t.me/echelon_ascent",
+    "github": "https://github.com/ELDEVODE/Ecas",
+    "whitepaper": "https://echelon-ascent.vercel.app/whitepaper"
+  }
+} 
